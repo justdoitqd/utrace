@@ -6,8 +6,10 @@ I want to introduce a new developed tool called "utrace"(linux + x86 version), w
 
 
 As a common demonstration, if you already have a binary "test" which includes recursive function call like following:
-int callMe(int n)
-{
+
+
+```
+int callMe(int n) {
      if (n == 0)
      {
            return 0;
@@ -16,11 +18,8 @@ int callMe(int n)
 
      return n;
 }
-...
 
-int main(int argc, void* argv[])
-
-{
+int main(int argc, void* argv[]) {
      ...
      while (1)
 
@@ -34,9 +33,10 @@ int main(int argc, void* argv[])
      ...
 }
 
+```
 
 Suppose the "test" process is running with pid 5715, you can "utrace" the "test" process like following:
-
+```
 simon@lionteeth:~$ utrace -Cp 5715
 
 ...
@@ -50,13 +50,13 @@ simon@lionteeth:~$ utrace -Cp 5715
 [ 5715]   -[ 2]callMe(int) resumed> = 3 
 [ 5715]  -[ 1]callMe(int) resumed> = 4 
 ...
-
+```
 As can be seen, utrace will reveal the function call flow, arguments and return value in the fly, with completely no need to insert code or recompile "test" binary. 
 
 As an explanation of the output: 
-
+```
                 [ 5715]      +[ 5]callMe(int)(0, 0, 0xb7cce418, 0x804891d, 1)  = 0 
-
+```
 - "[5715]" means the thread id. (main thread id equals process id)
 - "+" means running into a function (if "-", it means escaping from a function).
 - "[ 5]" means entering call stack depth 5.
@@ -79,7 +79,7 @@ Utrace supports multithreading and works for 5060 processes in lincase. Take CpC
 "utrace -Cp `pgrep -x CpCallm` "
 
     After making a basic call, part of the output can be following:
-...
+```
 
 [14183]    +[ 3]CmnPrSdlInstance::processSignal(SdlSignal&, bool)(0xf5a537ac, 0xff80df78, 0, 100, 0x9f15d98)   <unfinished ...>
 [14183]     +[ 4]CpCallmOhcp::ohcpSdl(CmnPrSdlProcess&, int, int, int, void*)(0xa02fe44, 109, 37, 17, 0x108fd6a0)   <unfinished ...>
@@ -88,6 +88,5 @@ Utrace supports multithreading and works for 5060 processes in lincase. Take CpC
 [14183]      +[ 5]CpCallmHcp::saveSignalHistory(int, int)(0xf1c8c898, 17, 37, 17, 37)  = 0
 [14183]      +[ 5]CpCallmOhcpMobile::procOrigAll(CmnPrSdlProcess&, int, int, int, void*)(0xf1c8c898, 0xa02fe44, 109, 37, 17)  = -1
 [14183]      +[ 5]CpCallmHcp::changeState2(CmnPrSdlProcess&, CpCallmHcpState::CommonStates, char*, int)(0xf1c8c898, 0xa02fe44, -1, 0x969e404, 300)   <unfinished ...>
-....
-
+```
    If the output rolls too quickly, -o option can be used for output redirection. Further advance usage of utrace can be explored with "utrace -h".
