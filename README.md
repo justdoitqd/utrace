@@ -2,7 +2,7 @@
 An out-of-date tool for user space call flow tracing
 
 -----
-I want to introduce a new developed tool called "utrace"(linux + x86 version), which can be used for “User defined function calls TRACE”. It will benefit 5060 learning/debugging. 
+I want to introduce a new developed tool called "utrace"(linux + x86 version), which can be used for “User defined function calls TRACE”. It will benefit 5060 learning/debugging. It derives from ltrace.
 
 
 As a common demonstration, if you already have a binary "test" which includes recursive function call like following:
