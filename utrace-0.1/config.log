@@ -1,0 +1,32 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:553: checking host system type
+configure:579: checking for gcc
+configure:692: checking whether the C compiler (gcc  ) works
+configure:708: gcc -o conftest    conftest.c  1>&5
+configure:734: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:739: checking whether we are using GNU C
+configure:748: gcc -E conftest.c
+configure:767: checking whether gcc accepts -g
+configure:810: checking for a BSD compatible install
+configure:864: checking for cplus_demangle in -liberty
+configure:883: gcc -o conftest -g -O2   conftest.c -liberty   1>&5
+configure:912: checking ltrace version
+configure:922: checking how to run the C preprocessor
+configure:943: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1002: checking for ANSI C header files
+configure:1015: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1082: gcc -o conftest -g -O2   conftest.c -liberty  1>&5
+configure: In function 'main':
+configure:1077: warning: incompatible implicit declaration of built-in function 'exit'
+configure:1109: checking for getopt.h
+configure:1119: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1146: checking for working const
+configure:1200: gcc -c -g -O2  conftest.c 1>&5
+configure:1221: checking for uid_t in sys/types.h
+configure:1255: checking for pid_t
+configure:1290: checking for getopt
+configure:1318: gcc -o conftest -g -O2   conftest.c -liberty  1>&5
+configure:1290: checking for getopt_long
+configure:1318: gcc -o conftest -g -O2   conftest.c -liberty  1>&5
